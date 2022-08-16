@@ -16,9 +16,9 @@ app.use((req, res, next) => {
 // Routes
 
 // Use mongoose to connect to the database (MongoDB)
-mongoose
+
   // Connect to given URI (stored in .env for security)
-  .connect(process.env.MONGODB_URI)
+  mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     // Listen for requests on specified port
     app.listen(process.env.PORT, () => {
