@@ -15,12 +15,12 @@ const getVolunteers = async (req, res) => {
 const getVolunteer = async (req, res) => {
     const { id } = req.params
 
-    if(!mongoose.Types.ObjectId.isValid(id)){
+    if(!Mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error: 'That volunteer does not exist'})
     }
-
+    
     const volunteer = await Volunteers.findById(id)
-
+    
     if(!volunteer){
         return res.status(404).json({error: 'That volunteer does not exist'})
     }
@@ -93,20 +93,7 @@ const createVolunteer = async(req,res) => {
     }
 }
 
-// const createVolunteer = async(req,res) => {
-//     const { username } = req.body
-//     let emptyFields = []
-//     if(!username){
-//         emptyFields.push('username')
-//     }
-   
-//     try{
-//         const volunteer = await Volunteers.create({ username })
-//         res.status(200).json(volunteer)
-//     } catch{
-//         res.status(400).json({ error: 'didnt work' })
-//     }
-//}
+
 //delete volunteer
 const deleteVolunteer = async(req, res) => {
     const { id } = req.params
