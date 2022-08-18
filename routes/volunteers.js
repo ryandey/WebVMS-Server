@@ -1,5 +1,11 @@
 const express = require('express')
-
+const{
+    getVolunteers,
+    getVolunteer,
+    createVolunteer,
+    deleteVolunteer,
+    updateVolunteer
+} = require('../controllers/volunteerController')
 const router = express.Router()
 
 //get all volunteers
@@ -32,4 +38,4 @@ router.patch('/:id', (req, res) => {
     res.json({mssg: 'changeChange'})
 })
 
-moudle.exports = router
+module.exports = router

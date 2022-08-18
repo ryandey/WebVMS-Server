@@ -45,7 +45,7 @@ const volunteerSchema = mongoose.Schema({
   },
   phoneNumberCell: {
     type: String,
-    required: false,
+    required: true,
   },
   phoneNumberWork: {
     type: String,
