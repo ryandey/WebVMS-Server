@@ -1,6 +1,6 @@
 const Volunteers = require('../models/volunteerModel')
 //const { default: mongoose } = require('mongoose')
-const Mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 //get all volunteers
 
@@ -15,7 +15,7 @@ const getVolunteers = async (req, res) => {
 const getVolunteer = async (req, res) => {
     const { id } = req.params
 
-    if(!Mongoose.Types.ObjectId.isValid(id)){
+    if(!mongoose.Types.ObjectId.isValid(id)){
         return res.status(404).json({error: 'That volunteer does not exist'})
     }
     
@@ -30,8 +30,12 @@ const getVolunteer = async (req, res) => {
 
 //create new volunteer
 const createVolunteer = async(req,res) => {
-    const {username, password, firstName, lastName, email, streetAddress, city, state, zipCode, phoneNumberHome, phoneNumberCell, phoneNumberWork, education, emergencyContactName, emergencyContactPhone, emergencyContactEmail, hasCopyOfID, hasCopyOfSSN, approvalStatus} = req.body
+    const {username, password, firstName, lastName, email, streetAddress, city, state, zipCode, 
+        phoneNumberHome, phoneNumberCell, phoneNumberWork, education, 
+        emergencyContactName, emergencyContactPhone, emergencyContactEmail, 
+        hasCopyOfID, hasCopyOfSSN, approvalStatus, availabilityTimes, currentLicenses, skills, preferredCenter} = req.body
     let emptyFields = []
+    
     if(!username){
         emptyFields.push('username')
     }
@@ -62,6 +66,9 @@ const createVolunteer = async(req,res) => {
     if(!phoneNumberCell){
         emptyFields.push('phoneNumberCell')
     }
+    if(!education){
+        emptyFields.push('education')
+    }
     if(!emergencyContactName){
         emptyFields.push('emergencyContactName')
     }
@@ -80,16 +87,29 @@ const createVolunteer = async(req,res) => {
     if(!approvalStatus){
         emptyFields.push('approvalStatus')
     }
+    if(!availabilityTimes){
+        emptyFields.push('availabilityTimes')
+    }
+    if(!currentLicenses){
+        emptyFields.push('currentLicenses')
+    }
+    if(!skills){
+        emptyFields.push('skills')
+    }
+    if(!preferredCenter){
+        emptyFields.push('preferredCenter')
+    }
     if(emptyFields.length>0){
         return res.status(400).json({ error: 'Make sure to fill in the required fields: ', emptyFields})
     }
     
-
     try{
-        const volunteer = await Volunteers.create({ username, password, firstName, lastName, email, streetAddress, city, state, zipCode, phoneNumberHome, phoneNumberCell, phoneNumberWork, education, emergencyContactName, emergencyContactPhone, emergencyContactEmail, hasCopyOfID, hasCopyOfSSN, approvalStatus })
+        const volunteer = await Volunteers.create({ username, password, firstName, lastName, email, streetAddress, city, state, zipCode, 
+            phoneNumberHome, phoneNumberCell, phoneNumberWork, education, emergencyContactName, emergencyContactPhone, 
+            emergencyContactEmail, hasCopyOfID, hasCopyOfSSN, approvalStatus, availabilityTimes, currentLicenses, skills, preferredCenter })
         res.status(200).json(volunteer)
-    } catch{
-        res.status(400).json({ error: 'didnt work' })
+    } catch (error) {
+        res.status(400).json({ error: error.message })
     }
 }
 

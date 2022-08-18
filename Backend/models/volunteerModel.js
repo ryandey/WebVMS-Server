@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema
 
-const volunteerSchema = mongoose.Schema({
+const volunteerSchema = new Schema({
   username: {
     type: String,
     required: true,
@@ -40,18 +41,17 @@ const volunteerSchema = mongoose.Schema({
     required: true,
   },
   phoneNumberHome: {
-    type: String,
+    type: Number,
     required: false,
   },
   phoneNumberCell: {
-    type: String,
+    type: Number,
     required: true,
   },
   phoneNumberWork: {
-    type: String,
+    type: Number,
     required: false,
   },
-  // may need to be added to another schema
   education: {
     type: String,
     required: true,
@@ -61,7 +61,7 @@ const volunteerSchema = mongoose.Schema({
     required: true,
   },
   emergencyContactPhone: {
-    type: String,
+    type: Number,
     required: true,
   },
   emergencyContactEmail: {
@@ -76,12 +76,26 @@ const volunteerSchema = mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  // may need to be added to another schema
   approvalStatus: {
     type: String,
     required: true,
-  }
-  //NEED availability times, current licenses, skills/interests, and preferred centers
+  },
+  availabilityTimes: {
+    type: String,
+    required: true,
+  },
+  currentLicenses: {
+    type: String,
+    required: false,
+  },
+  skills: {
+    type: String,
+    required: false,
+  },
+  preferredCenter: {
+    type: String,
+    required: true,
+  },
 })
 
 module.exports = mongoose.model('Volunteers', volunteerSchema)
