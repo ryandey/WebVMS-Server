@@ -9,33 +9,18 @@ const{
 const router = express.Router()
 
 //get all volunteers
-router.get('/', (req, res) => {
-
-    res.json({mssg: 'hello'})
-})
+router.get('/', getVolunteers)
 
 //get a single volunteer
-router.get('/:id', (req, res) => {
-
-    res.json({mssg: 'ding'})
-})
+router.get('/:id', getVolunteer)
 
 //create a new volunteer
-router.post('/', (req, res) => {
-
-    res.json({mssg: 'postPost'})
-})
+router.post('/', createVolunteer)
 
 //delete an unlucky volunteer
-router.post('/:id', (req, res) => {
+router.delete('/:id', deleteVolunteer)
 
-    res.json({mssg: 'goodbye'})
-})
-
-//update an unlucky volunteer
-router.patch('/:id', (req, res) => {
-
-    res.json({mssg: 'changeChange'})
-})
+//update a volunteer
+router.patch('/:id', updateVolunteer)
 
 module.exports = router
