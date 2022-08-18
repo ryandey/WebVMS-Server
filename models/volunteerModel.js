@@ -82,4 +82,6 @@ const volunteerSchema = mongoose.Schema({
     required: true,
   },
   // NEED availability times, current licenses, skills/interests, and preferred centers
-});
+})
+
+module.exports = mongoose.model('Volunteers', volunteerSchema)
