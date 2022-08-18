@@ -29,84 +29,84 @@ const getVolunteer = async (req, res) => {
 }
 
 //create new volunteer
-// const createVolunteer = async(req,res) => {
-//     const {username, password, firstName, lastName, email, streetAddress, city, state, zipcode, phoneNumberHome, phoneNumberCell, phoneNumberWork, education, emergencyContactName, emergencyContactPhone, emergencyContactEmail, hasCopyOfID, hasCopyOfSSN, approvalStatus} = req.body
-//     let emptyFields = []
-//     if(!username){
-//         emptyFields.push('username')
-//     }
-//     if(!password){
-//         emptyFields.push('password')
-//     }
-//     if(!firstName){
-//         emptyFields.push('firstName')
-//     }
-//     if(!lastName){
-//         emptyFields.push('lastName')
-//     }
-//     if(!email){
-//         emptyFields.push('email')
-//     }
-//     if(!streetAddress){
-//         emptyFields.push('streetAddress')
-//     }
-//     if(!city){
-//         emptyFields.push('city')
-//     }
-//     if(!state){
-//         emptyFields.push('state')
-//     }
-//     if(!zipcode){
-//         emptyFields.push('zipCode')
-//     }
-//     if(!phoneNumberCell){
-//         emptyFields.push('phoneNumberCell')
-//     }
-//     if(!emergencyContactName){
-//         emptyFields.push('emergencyContactName')
-//     }
-//     if(!emergencyContactPhone){
-//         emptyFields.push('emergencyContactPhone')
-//     }
-//     if(!emergencyContactEmail){
-//         emptyFields.push('emergencyContactEmail')
-//     }
-//     if(!hasCopyOfID){
-//         emptyFields.push('hasCopyOfID')
-//     }
-//     if(!hasCopyOfSSN){
-//         emptyFields.push('hasCopyOfSSN')
-//     }
-//     if(!approvalStatus){
-//         emptyFields.push('approvalStatus')
-//     }
-//     if(emptyFields.length>0){
-//         return res.status(400).json({ error: 'Make sure to fill in the required fields: ', emptyFields})
-//     }
-    
-
-//     try{
-//         const volunteer = await Volunteers.create({ username, password, firstName, lastName, email, streetAddress, city, state, zipcode, phoneNumberHome, phoneNumberCell, phoneNumberWork, education, emergencyContactName, emergencyContactPhone, emergencyContactEmail, hasCopyOfID, hasCopyOfSSN, approvalStatus })
-//         res.status(200).json(volunteer)
-//     } catch{
-//         res.status(400).json({ error: 'didnt work' })
-//     }
-// }
-
 const createVolunteer = async(req,res) => {
-    const { username } = req.body
+    const {username, password, firstName, lastName, email, streetAddress, city, state, zipCode, phoneNumberHome, phoneNumberCell, phoneNumberWork, education, emergencyContactName, emergencyContactPhone, emergencyContactEmail, hasCopyOfID, hasCopyOfSSN, approvalStatus} = req.body
     let emptyFields = []
     if(!username){
         emptyFields.push('username')
     }
-   
+    if(!password){
+        emptyFields.push('password')
+    }
+    if(!firstName){
+        emptyFields.push('firstName')
+    }
+    if(!lastName){
+        emptyFields.push('lastName')
+    }
+    if(!email){
+        emptyFields.push('email')
+    }
+    if(!streetAddress){
+        emptyFields.push('streetAddress')
+    }
+    if(!city){
+        emptyFields.push('city')
+    }
+    if(!state){
+        emptyFields.push('state')
+    }
+    if(!zipCode){
+        emptyFields.push('zipCode')
+    }
+    if(!phoneNumberCell){
+        emptyFields.push('phoneNumberCell')
+    }
+    if(!emergencyContactName){
+        emptyFields.push('emergencyContactName')
+    }
+    if(!emergencyContactPhone){
+        emptyFields.push('emergencyContactPhone')
+    }
+    if(!emergencyContactEmail){
+        emptyFields.push('emergencyContactEmail')
+    }
+    if(!hasCopyOfID){
+        emptyFields.push('hasCopyOfID')
+    }
+    if(!hasCopyOfSSN){
+        emptyFields.push('hasCopyOfSSN')
+    }
+    if(!approvalStatus){
+        emptyFields.push('approvalStatus')
+    }
+    if(emptyFields.length>0){
+        return res.status(400).json({ error: 'Make sure to fill in the required fields: ', emptyFields})
+    }
+    
+
     try{
-        const volunteer = await Volunteers.create({ username })
+        const volunteer = await Volunteers.create({ username, password, firstName, lastName, email, streetAddress, city, state, zipCode, phoneNumberHome, phoneNumberCell, phoneNumberWork, education, emergencyContactName, emergencyContactPhone, emergencyContactEmail, hasCopyOfID, hasCopyOfSSN, approvalStatus })
         res.status(200).json(volunteer)
     } catch{
         res.status(400).json({ error: 'didnt work' })
     }
 }
+
+// const createVolunteer = async(req,res) => {
+//     const { username } = req.body
+//     let emptyFields = []
+//     if(!username){
+//         emptyFields.push('username')
+//     }
+   
+//     try{
+//         const volunteer = await Volunteers.create({ username })
+//         res.status(200).json(volunteer)
+//     } catch{
+//         res.status(400).json({ error: 'didnt work' })
+//     }
+//}
 //delete volunteer
 const deleteVolunteer = async(req, res) => {
     const { id } = req.params
