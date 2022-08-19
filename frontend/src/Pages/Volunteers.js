@@ -20,7 +20,7 @@ const Volunteers = () => {
     }, [dispatch]);
 
   return (
-    <div className="home">
+    <div className="volunteers">
       <div className="menu">
         <h2>Manage Volunteers</h2>
         <div className="menu-buttons">

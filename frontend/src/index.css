@@ -55,6 +55,50 @@ header nav a {
   margin: 0 auto;
 }
 
+/* Homepage */
+.home {
+  display: flex;
+  height: 65vh;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.home a {
+  color: #333;
+  text-decoration: none;
+}
+.home-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f8f8f8;
+  width: 400px;
+  height: 400px;
+  border-radius: 5%;
+  box-shadow: 0 10px 20px rgba(71, 71, 71, 0.08);
+  transition: all 150ms ease;
+}
+.home-panel span {
+  font-size: 5rem;
+  padding: 2rem;
+}
+.home-panel h2 {
+  color: var(--primary);
+  margin: 0;
+}
+.home-panel p {
+  color: rgb(83, 83, 83);
+}
+.home-panel:hover {
+  box-shadow: 0 10px 20px rgba(71, 71, 71, 0.2);
+  border: 1px solid var(--primary);
+}
+
+/* Volunteers page */
+.volunteers {
+
+}
 
 /* Volunteer Details Component */
 .volunteer-details {
