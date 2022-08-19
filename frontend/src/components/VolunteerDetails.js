@@ -30,8 +30,11 @@ const VolunteerDetails = ({ volunteer }) => {
       <p><strong>Phone:</strong> {volunteer.phoneNumberCell}</p>
       <p><strong>Availability:</strong> {volunteer.availabilityTimes}</p>
       <p><strong>Preferred Center:</strong> {volunteer.preferredCenter}</p>
-      <div className='material-symbols-outlined'>edit</div>
-      <span className='material-symbols-outlined' onClick={handleDelete}>delete</span>
+      <div>
+        <span className='material-symbols-outlined'>edit</span>
+        <span className='material-symbols-outlined' onClick={handleDelete}>delete</span>
+      </div>
+      
     </div>
   )
 }

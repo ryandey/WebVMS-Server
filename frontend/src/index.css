@@ -140,6 +140,17 @@ header nav a {
 .menu h2 {
   color: #333;
 }
+.menu-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-buttons form {
+  margin-right: 2rem;
+}
+.menu-buttons a {
+  text-decoration: none;
+}
 .btnAdd {
   background: var(--primary);
   border: 2px solid var(--primary);
@@ -155,4 +166,70 @@ header nav a {
 }
 .btnAdd span {
   margin-left: 5px;
+}
+
+/* Volunteer Form */
+label, input {
+  display: block;
+}
+input {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+form button {
+  background: var(--primary);
+  border: 0;
+  color: #fff;
+  padding: 10px;
+  font-family: "Poppins";
+  border-radius: 4px;
+  cursor: pointer;
+}
+div.error {
+  padding: 10px;
+  background: #ffefef;
+  border: 1px solid var(--error);
+  color: var(--error);
+  border-radius: 4px;
+  margin: 20px 0;
+}
+input.error {
+  border: 1px solid var(--error);
+}
+.create {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.form-name {
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
+}
+.name-inputs {
+  width: 100%;
+}
+.name-inputs:first-child {
+  margin-right: 30px;
+}
+.form-stateZip {
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
+}
+.form-phone {
+  display: flex;
+  flex-direction: row;
+  justify-items: space-between;
+}
+.form-phone .name-inputs:last-child {
+  margin-left: 30px;
+}
+.form-education {
+  margin-bottom: 30px;
 }

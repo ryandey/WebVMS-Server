@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import { useVolunteersContext } from '../hooks/useVolunteersContext'
 
 // components
@@ -24,7 +25,12 @@ const Volunteers = () => {
       <div className="menu">
         <h2>Manage Volunteers</h2>
         <div className="menu-buttons">
-          <button className="btnAdd">Add <span className="material-symbols-outlined">add</span></button>
+          <form action="search">
+            <input type="text" placeholder='Search volunteers'/>
+          </form>
+          <Link to="/volunteers/add">
+            <button className="btnAdd">Add <span className="material-symbols-outlined">add</span></button>
+          </Link>
         </div>
       </div>
       {/* <div className='volunteers'>
