@@ -1,35 +1,26 @@
 const express = require('express')
-
+const{
+    getOpportunities,
+    getOpportunity,
+    createOpportunity,
+    deleteOpportunity,
+    updateOpportunity
+} = require('../controllers/opportunityController')
 const router = express.Router()
 
-//get all volunteers
-router.get('/', (req, res) => {
+//get all opportunities
+router.get('/', getOpportunities)
 
-    res.json({mssg: 'hello'})
-})
+//get a single opportunity
+router.get('/:id', getOpportunity)
 
-//get a single volunteer
-router.get('/:id', (req, res) => {
+//create a new opportunity
+router.post('/', createOpportunity)
 
-    res.json({mssg: 'ding'})
-})
+//delete an unlucky opportunity
+router.delete('/:id', deleteOpportunity)
 
-//create a new volunteer
-router.post('/', (req, res) => {
-
-    res.json({mssg: 'postPost'})
-})
-
-//delete an unlucky volunteer
-router.post('/:id', (req, res) => {
-
-    res.json({mssg: 'goodbye'})
-})
-
-//update an opportunity
-router.patch('/:id', (req, res) => {
-
-    res.json({mssg: 'changeChange'})
-})
+//update a opportunity
+router.patch('/:id', updateOpportunity)
 
 module.exports = router
