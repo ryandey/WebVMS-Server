@@ -86,3 +86,29 @@ header nav a {
   border-radius: 50%;
   color: #333;
 }
+
+/* Volunteers Page */
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu h2 {
+  color: #333;
+}
+.btnAdd {
+  background: var(--primary);
+  border: 2px solid var(--primary);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.btnAdd span {
+  margin-left: 5px;
+}
