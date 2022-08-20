@@ -2,6 +2,10 @@ const express = require('express')
 const{
     getVolunteers,
     getVolunteer,
+    getApproved,
+    getPending,
+    getDisapproved,
+    getMixed,
     createVolunteer,
     deleteVolunteer,
     updateVolunteer
@@ -10,6 +14,19 @@ const router = express.Router()
 
 //get all volunteers
 router.get('/', getVolunteers)
+
+//get all approved volunteers
+router.get('/approved', getApproved)
+
+//get all pending volunteers
+router.get('/pending', getPending)
+
+//get all disapproved volunteers
+router.get('/disapproved', getDisapproved)
+
+//get all pending/approved volunteers
+router.get('/approvedOrPending', getMixed)
+
 
 //get a single volunteer
 router.get('/:id', getVolunteer)
