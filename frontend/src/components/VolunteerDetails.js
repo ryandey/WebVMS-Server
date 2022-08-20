@@ -18,7 +18,7 @@ const VolunteerDetails = ({ volunteer }) => {
     // Ensure DB succesfully deleted volunteer before updating UI
     if (response.ok) {
        // remove from global state to update UI
-      dispatch({ type: 'DELETE_VOLUNTEER', payload: json });
+      dispatch({ type: 'DELETE_VOLUNTEERS', payload: json });
     }
   }
 

@@ -3,6 +3,8 @@ import { useVolunteersContext } from '../hooks/useVolunteersContext';
 
 const AddVolunteerForm = () => {
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
+  const [username, setUserName] = useState('');
+  const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
@@ -32,6 +34,8 @@ const AddVolunteerForm = () => {
     e.preventDefault(); // Prevent page refresh on submit
 
     const volunteer = {
+      username,
+      password,
       firstName,
       lastName,
       email,
@@ -52,7 +56,7 @@ const AddVolunteerForm = () => {
       availabilityTimes,
       currentLicenses,
       skills,
-      preferredCenter,
+      preferredCenter
     }
 
     const response = await fetch('/api/volunteers', {
@@ -75,6 +79,8 @@ const AddVolunteerForm = () => {
     if (response.ok) {
       setEmptyFields([])
       setError(null);
+      setUserName('')
+      setPassword('')
       setFirstName('')
       setLastName('')
       setEmail('')
@@ -106,6 +112,24 @@ const AddVolunteerForm = () => {
         <h2>Add a New Volunteer</h2>
 
         {/* NAME */}
+        <div className="name-inputs">
+            <label>Username*</label>
+            <input 
+              type="text"
+              value={username} 
+              onChange={(e) => setUserName(e.target.value)} 
+              className={emptyFields.includes('username') ? 'error' : ''}
+            />
+          </div>
+          <div className="name-inputs">
+            <label>Password*</label>
+            <input 
+              type="text"
+              value={password} 
+              onChange={(e) => setPassword(e.target.value)} 
+              className={emptyFields.includes('password') ? 'error' : ''} 
+            />
+          </div>
         <div className="form-name">
           <div className="name-inputs">
             <label>First Name*</label>
@@ -133,7 +157,7 @@ const AddVolunteerForm = () => {
           <input 
             type="email"
             value={email} 
-            onChange={(e) => setFirstName(e.target.value)} 
+            onChange={(e) => setEmail(e.target.value)} 
             className={emptyFields.includes('firstName') ? 'error' : ''} 
           />
         </div>
@@ -253,12 +277,75 @@ const AddVolunteerForm = () => {
             onChange={(e) => setEmergencyContactEmail(e.target.value)} 
             className={emptyFields.includes('emergencyContactEmail') ? 'error' : ''} 
           />
+         
+          <label>ID*</label>
+          <select
+            value={hasCopyOfID} 
+            onChange={(e) => setHasCopyOfID(e.target.value)} 
+            className={emptyFields.includes('hasCopyOfID') ? 'error' : ''} 
+          >
+            <option></option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+          
+          <label>SSN*</label>
+          <select
+            value={hasCopyOfSSN} 
+            onChange={(e) => setHasCopyOfSSN(e.target.value)} 
+            className={emptyFields.includes('hasCopyOfSSN') ? 'error' : ''} 
+          >
+            <option></option>
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
+          
+          <label>Approval Status*</label>
+          <input
+            type="text"
+            value={approvalStatus} 
+            onChange={(e) => setApprovalStatus(e.target.value)} 
+            className={emptyFields.includes('approvalStatus') ? 'error' : ''} 
+          />
+           <label>Time of Availability*</label>
+          <input
+            type="text"
+            value={availabilityTimes} 
+            onChange={(e) => setAvailabilityTimes(e.target.value)} 
+            className={emptyFields.includes('availabilityTimes') ? 'error' : ''} 
+          />
+          <label>Current Licenses</label>
+          <input
+            type="text"
+            value={currentLicenses} 
+            onChange={(e) => setCurrentLicenses(e.target.value)} 
+            className={emptyFields.includes('currentLicenses') ? 'error' : ''} 
+          />
+          <label>Skills</label>
+          <input
+            type="text"
+            value={skills} 
+            onChange={(e) => setSkills(e.target.value)} 
+            className={emptyFields.includes('skills') ? 'error' : ''} 
+          />
+          <label>Preferred Center*</label>
+          <input
+            type="text"
+            value={preferredCenter} 
+            onChange={(e) => setPreferredCenter(e.target.value)} 
+            className={emptyFields.includes('preferredCenter') ? 'error' : ''} 
+          />
+
+          
+          
+          
         </div>
         
 
         
         
-        
+        <button className="btnAdd">Add Volunteer</button>
+
 
           {error && <div className="error">{error}</div>}
       </form>
