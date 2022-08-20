@@ -1,4 +1,5 @@
 import { useVolunteersContext } from "../hooks/useVolunteersContext";
+import { Link } from 'react-router-dom';
 
 const VolunteerDetails = ({ volunteer }) => {
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
@@ -31,7 +32,9 @@ const VolunteerDetails = ({ volunteer }) => {
       <p><strong>Availability:</strong> {volunteer.availabilityTimes}</p>
       <p><strong>Preferred Center:</strong> {volunteer.preferredCenter}</p>
       <div>
-        <span className='material-symbols-outlined'>edit</span>
+        <Link to="/volunteers/edit">
+        <span className='material-symbols-outlined'>edita</span>
+         </Link>
         <span className='material-symbols-outlined' onClick={handleDelete}>delete</span>
       </div>
       

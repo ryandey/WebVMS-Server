@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Volunteers from './Pages/Volunteers';
 import AddVolunteer from './Pages/AddVolunteer';
 import Opportunities from './Pages/Opportunities';
+import EditVolunteer from './Pages/EditVolunteer';
+
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />}/>
           <Route path="/volunteers" element={<Volunteers />} />
           <Route path="volunteers/add" element={<AddVolunteer />} />
+          <Route path="volunteers/edit" element={<EditVolunteer />}/>
           <Route path="/opportunities" element={<Opportunities />} />
         </Routes>
       </div>

@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useVolunteersContext } from '../hooks/useVolunteersContext';
 
-const AddVolunteerForm = () => {
+
+const EditVolunteerForm = ({ volunteer }) => {
+    
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
-  const [username, setUserName] = useState('');
+  const [username, setUserName] = useState(volunteer.username);
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -29,38 +31,40 @@ const AddVolunteerForm = () => {
   const [error, setError] = useState('');
   const [emptyFields, setEmptyFields] = useState([]);
 
+//   const volunteer = {
+//     username,
+//     password,
+//     firstName,
+//     lastName,
+//     email,
+//     streetAddress,
+//     city,
+//     state,
+//     zipCode,
+//     phoneNumberHome,
+//     phoneNumberCell,
+//     phoneNumberWork,
+//     education,
+//     emergencyContactName,
+//     emergencyContactPhone,
+//     emergencyContactEmail,
+//     hasCopyOfID,
+//     hasCopyOfSSN,
+//     approvalStatus,
+//     availabilityTimes,
+//     currentLicenses,
+//     skills,
+//     preferredCenter
+//   }
+
   // Logic for add button
-  const handleSubmit = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault(); // Prevent page refresh on submit
 
-    const volunteer = {
-      username,
-      password,
-      firstName,
-      lastName,
-      email,
-      streetAddress,
-      city,
-      state,
-      zipCode,
-      phoneNumberHome,
-      phoneNumberCell,
-      phoneNumberWork,
-      education,
-      emergencyContactName,
-      emergencyContactPhone,
-      emergencyContactEmail,
-      hasCopyOfID,
-      hasCopyOfSSN,
-      approvalStatus,
-      availabilityTimes,
-      currentLicenses,
-      skills,
-      preferredCenter
-    }
+    
 
-    const response = await fetch('/api/volunteers', {
-      method: 'POST',
+    const response = await fetch('/api/volunteers/'  + volunteer._id, {
+      method: 'PATCH',
       body: JSON.stringify(volunteer),
       headers: {
         'Content-Type': 'application/json',
@@ -102,14 +106,14 @@ const AddVolunteerForm = () => {
       setCurrentLicenses('')
       setSkills('')
       setPreferredCenter('')
-      dispatch({ type: 'ADD_VOLUNTEER', payload: json });
+      dispatch({ type: 'SET_VOLUNTEERS', payload: json });
     }
   }
 
   return (
     <div>
-      <form className="create" onSubmit={handleSubmit}>
-        <h2>Add a New Volunteer</h2>
+      <form className="create" onSubmit={handleUpdate}>
+        <h2>Update the Volunteer {volunteer.username}</h2>
 
         {/* NAME */}
         <div className="name-inputs">
@@ -353,4 +357,4 @@ const AddVolunteerForm = () => {
   )
 }
 
-export default AddVolunteerForm
+export default EditVolunteerForm
