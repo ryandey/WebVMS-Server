@@ -20,7 +20,7 @@ const getApproved = async(req, res) => {
 
 const getPending = async(req, res) => {
 
-    const volunteers = await Volunteers.find({approvalStatus: "Pending"}).sort({createdAt: -1})
+    const volunteers = await Volunteers.find({ approvalStatus: "Pending" }).sort({ createdAt: -1 })
 
     res.status(200).json(volunteers)
 
@@ -183,7 +183,12 @@ const updateVolunteer = async(req, res) => {
 module.exports = {
     getVolunteer,
     getVolunteers,
+    getPending,
+    getApproved,
+    getDisapproved,
+    getMixed,
     createVolunteer,
     deleteVolunteer,
     updateVolunteer
+
 }
