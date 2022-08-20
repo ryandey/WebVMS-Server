@@ -4,6 +4,7 @@ import { useVolunteersContext } from '../hooks/useVolunteersContext'
 
 // components
 import VolunteerDetails from '../components/VolunteerDetails'
+import EditVolunteerForm from '../components/EditVolunteerForm';
 
 const Volunteers = () => {
   const { volunteers, dispatch } = useVolunteersContext();
@@ -42,6 +43,7 @@ const Volunteers = () => {
         {volunteers && volunteers.map((volunteer) => (
           <VolunteerDetails key={volunteer._id} volunteer={volunteer} />
         ))}
+        
       </div>
     </div>
   )

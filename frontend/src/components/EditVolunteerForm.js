@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import { useVolunteersContext } from '../hooks/useVolunteersContext';
 
-
 const EditVolunteerForm = ({ volunteer }) => {
     
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
-  const [username, setUserName] = useState(volunteer.username);
+  const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -113,7 +112,7 @@ const EditVolunteerForm = ({ volunteer }) => {
   return (
     <div>
       <form className="create" onSubmit={handleUpdate}>
-        <h2>Update the Volunteer {volunteer.username}</h2>
+        <h2>Update the Volunteer</h2>
 
         {/* NAME */}
         <div className="name-inputs">
@@ -348,7 +347,7 @@ const EditVolunteerForm = ({ volunteer }) => {
 
         
         
-        <button className="btnAdd">Add Volunteer</button>
+        <button className="btnAdd">Update Volunteer</button>
 
 
           {error && <div className="error">{error}</div>}
