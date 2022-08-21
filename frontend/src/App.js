@@ -3,6 +3,9 @@ import Home from './Pages/home';
 import Navbar from './components/Navbar';
 import Volunteers from './Pages/Volunteers';
 import PendingVolunteers from './Pages/PendingVolunteers'
+import ApprovedVolunteers from './Pages/ApprovedVolunteers'
+import DisapprovedVolunteers from './Pages/DisapprovedVolunteers'
+import MixedVolunteers from './Pages/MixedVolunteers'
 import AddVolunteer from './Pages/AddVolunteer';
 import Opportunities from './Pages/Opportunities';
 import EditVolunteer from './Pages/EditVolunteer';
