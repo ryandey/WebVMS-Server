@@ -11,7 +11,7 @@ const Volunteers = () => {
 
     useEffect(() => {
       const fetchVolunteers = async () => {
-        const response = await fetch('/api/volunteers');
+        const response = await fetch('/api/volunteers/approved');
         const json = await response.json(); 
 
         if (response.ok) {

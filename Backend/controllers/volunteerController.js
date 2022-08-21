@@ -10,6 +10,38 @@ const getVolunteers = async (req, res) => {
     res.status(200).json(volunteers)
 }
 
+const getApproved = async(req, res) => {
+
+    const volunteers = await Volunteers.find({approvalStatus: "Approved"}).sort({createdAt: -1})
+
+    res.status(200).json(volunteers)
+
+}
+
+const getPending = async(req, res) => {
+
+    const volunteers = await Volunteers.find({ approvalStatus: "Pending" }).sort({ createdAt: -1 })
+
+    res.status(200).json(volunteers)
+
+}
+
+const getDisapproved = async(req, res) => {
+
+    const volunteers = await Volunteers.find({approvalStatus: "Disapproved"}).sort({createdAt: -1})
+
+    res.status(200).json(volunteers)
+
+}
+
+const getMixed = async(req, res) => {
+
+    const volunteers = await Volunteers.find({approvalStatus: "Approved", approvalStatus: "Pending"}).sort({createdAt: -1})
+
+    res.status(200).json(volunteers)
+
+}
+
 
 //get a single volunteer
 const getVolunteer = async (req, res) => {
@@ -151,7 +183,12 @@ const updateVolunteer = async(req, res) => {
 module.exports = {
     getVolunteer,
     getVolunteers,
+    getPending,
+    getApproved,
+    getDisapproved,
+    getMixed,
     createVolunteer,
     deleteVolunteer,
     updateVolunteer
+
 }
