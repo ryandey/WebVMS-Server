@@ -26,14 +26,14 @@ function App() {
       <div className = "pages">
         <Routes>
           <Route path="/" element={<Home />}/>
-          <Route path="/volunteers" element={user ? <Navigate to="/login" /> : <Volunteers />} />
-          <Route path="/volunteers/pending" element={!user ? <PendingVolunteers /> : <Navigate to="/login" />} />
-          <Route path="/volunteers/approved" element={!user ? <ApprovedVolunteers /> : <Navigate to="/login" />} />
-          <Route path="/volunteers/disapproved" element={!user ? <DisapprovedVolunteers /> : <Navigate to="/login" />} />
-          <Route path="/volunteers/mixed" element={!user ? <MixedVolunteers /> : <Navigate to="/login" />} /> 
-          <Route path="volunteers/add" element={!user ? <AddVolunteer /> : <Navigate to="/login" />} />
-          <Route path="volunteers/edit" element={!user ? <EditVolunteer /> : <Navigate to="/login" />}/>
-          <Route path="/opportunities" element={!user ? <Opportunities /> : <Navigate to="/login" />} />
+          <Route path="/volunteers" element={!user ? <Navigate to="/login" /> : <Volunteers />} />
+          <Route path="/volunteers/pending" element={user ? <PendingVolunteers /> : <Navigate to="/login" />} />
+          <Route path="/volunteers/approved" element={user ? <ApprovedVolunteers /> : <Navigate to="/login" />} />
+          <Route path="/volunteers/disapproved" element={user ? <DisapprovedVolunteers /> : <Navigate to="/login" />} />
+          <Route path="/volunteers/mixed" element={user ? <MixedVolunteers /> : <Navigate to="/login" />} /> 
+          <Route path="volunteers/add" element={user ? <AddVolunteer /> : <Navigate to="/login" />} />
+          <Route path="volunteers/edit" element={user ? <EditVolunteer /> : <Navigate to="/login" />}/>
+          <Route path="/opportunities" element={user ? <Opportunities /> : <Navigate to="/login" />} />
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
         </Routes>

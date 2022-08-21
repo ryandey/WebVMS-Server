@@ -38,11 +38,7 @@ const Volunteers = () => {
           </Link>
         </div>
       </div>
-      {/* <div className='volunteers'>
-          {volunteers && volunteers.map((volunteer) => (
-              <p key={volunteer._id}>{volunteer.username}</p>
-          ))}
-      </div> */}
+      
       <div className="vol-list">
         {volunteers && volunteers.map((volunteer) => (
           <VolunteerDetails key={volunteer._id} volunteer={volunteer} />
