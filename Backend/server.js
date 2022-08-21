@@ -1,8 +1,10 @@
 require("dotenv").config();
+
 const express = require("express");
 const volunteerRoutes = require('./routes/volunteers')
 const opportunityRoutes = require('./routes/opportunities')
-const { mongoose } = require("mongoose");
+const userRoutes = require('./routes/user')
+const mongoose = require("mongoose");
 
 // Initialize express
 const app = express();
@@ -16,9 +18,9 @@ app.use((req, res, next) => {
 });
 
 // Routes
-
 app.use('/api/volunteers', volunteerRoutes)
 app.use('/api/opportunities', opportunityRoutes)
+app.use('/api/user', userRoutes)
 
 
 // Use mongoose to connect to the database (MongoDB)

@@ -6,7 +6,11 @@ const{
     deleteVolunteer,
     updateVolunteer
 } = require('../controllers/volunteerController')
+
+const requireAuth = require('../middleware/requireAuth')
 const router = express.Router()
+
+router.use(requireAuth)
 
 //get all volunteers
 router.get('/', getVolunteers)
