@@ -13,9 +13,9 @@ const Volunteers = () => {
 
     useEffect(() => {
       const fetchVolunteers = async () => {
-        const response = await fetch('/api/volunteers', {
+        const response = await fetch('/api/volunteers/disapproved', {
           headers: {'Authorization': `Bearer ${user.token}`}
-        })
+        });
         const json = await response.json(); 
 
         if (response.ok) {
@@ -38,7 +38,11 @@ const Volunteers = () => {
           </Link>
         </div>
       </div>
-      
+      {/* <div className='volunteers'>
+          {volunteers && volunteers.map((volunteer) => (
+              <p key={volunteer._id}>{volunteer.username}</p>
+          ))}
+      </div> */}
       <div className="vol-list">
         {volunteers && volunteers.map((volunteer) => (
           <VolunteerDetails key={volunteer._id} volunteer={volunteer} />

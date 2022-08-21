@@ -1,17 +1,19 @@
 import { useVolunteersContext } from "../hooks/useVolunteersContext";
 import { Link } from 'react-router-dom';
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const VolunteerDetails = ({ volunteer }) => {
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
+  const { user } = useAuthContext(); // Allow access to manage volunteers
 
   // Logic for delete button
   const handleDelete = async () => {
     // Delete volunteer from the database
     const response = await fetch("/api/volunteers/" + volunteer._id, {
       method: 'DELETE',
-      // headers: {
-      //   Authorization: `Bearer ${user.token}`,
-      // },
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
     });
 
     const json = await response.json();

@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useVolunteersContext } from '../hooks/useVolunteersContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const AddVolunteerForm = () => {
+  const { user } = useAuthContext();
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -64,6 +66,7 @@ const AddVolunteerForm = () => {
       body: JSON.stringify(volunteer),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
       }
     })
 
