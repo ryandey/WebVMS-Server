@@ -12,7 +12,7 @@ const getVolunteers = async (req, res) => {
 
 const getApproved = async(req, res) => {
 
-    const volunteers = await Volunteers.find({approvalStatus: "Approved"}).sort({createdAt: -1})
+    const volunteers = await Volunteers.find({}).sort({createdAt: -1})
 
     res.status(200).json(volunteers)
 
