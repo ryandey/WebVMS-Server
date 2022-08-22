@@ -11,7 +11,7 @@ import DisapprovedVolunteers from './Pages/DisapprovedVolunteers'
 import MixedVolunteers from './Pages/MixedVolunteers'
 import AddVolunteer from './Pages/AddVolunteer';
 import Opportunities from './Pages/Opportunities';
-import EditVolunteer from './Pages/EditVolunteer';
+import EditVolunteerForms from './components/EditVolunteerForm';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
 
@@ -32,7 +32,7 @@ function App() {
           <Route path="/volunteers/disapproved" element={user ? <DisapprovedVolunteers /> : <Navigate to="/login" />} />
           <Route path="/volunteers/mixed" element={user ? <MixedVolunteers /> : <Navigate to="/login" />} /> 
           <Route path="volunteers/add" element={user ? <AddVolunteer /> : <Navigate to="/login" />} />
-          <Route path="volunteers/edit" element={user ? <EditVolunteer /> : <Navigate to="/login" />}/>
+          <Route path='volunteers/edit/:id' element={user ? <EditVolunteerForms /> : <Navigate to="/login" />}/>
           <Route path="/opportunities" element={user ? <Opportunities /> : <Navigate to="/login" />} />
           <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
           <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />

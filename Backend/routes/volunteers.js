@@ -42,6 +42,6 @@ router.post('/', createVolunteer)
 router.delete('/:id', deleteVolunteer)
 
 //update a volunteer
-router.patch('/:id', updateVolunteer)
+router.patch('/edit/:id', updateVolunteer)
 
 module.exports = router
