@@ -30,9 +30,6 @@ const Volunteers = () => {
       <div className="menu">
         <h2>Manage Volunteers</h2>
         <div className="menu-buttons">
-          <form action="search">
-            <input type="text" placeholder='Search volunteers'/>
-          </form>
           <Link to="/volunteers/add">
             <button className="btnAdd">Add <span className="material-symbols-outlined">add</span></button>
           </Link>
