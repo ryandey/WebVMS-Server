@@ -34,7 +34,7 @@ const VolunteerDetails = ({ volunteer }) => {
       <p><strong>Availability:</strong> {volunteer.availabilityTimes}</p>
       <p><strong>Preferred Center:</strong> {volunteer.preferredCenter}</p>
       <div>
-        <Link to={"/volunteers/edit/" +volunteer._id}>
+        <Link to={"/volunteers/edit/" + volunteer._id}>
         <span className='material-symbols-outlined'>edita</span>
          </Link>
         <span className='material-symbols-outlined' onClick={handleDelete}>delete</span>
