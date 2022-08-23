@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useVolunteersContext } from '../hooks/useVolunteersContext';
+import { useAuthContext } from '../hooks/useAuthContext';
 
 const EditVolunteerForm = ({ volunteer }) => {
-    
+  const { user } = useAuthContext();
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
-  const [username, setUserName] = useState('');
+  const [username, setUserName] = useState();
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -30,43 +31,19 @@ const EditVolunteerForm = ({ volunteer }) => {
   const [error, setError] = useState('');
   const [emptyFields, setEmptyFields] = useState([]);
 
-//   const volunteer = {
-//     username,
-//     password,
-//     firstName,
-//     lastName,
-//     email,
-//     streetAddress,
-//     city,
-//     state,
-//     zipCode,
-//     phoneNumberHome,
-//     phoneNumberCell,
-//     phoneNumberWork,
-//     education,
-//     emergencyContactName,
-//     emergencyContactPhone,
-//     emergencyContactEmail,
-//     hasCopyOfID,
-//     hasCopyOfSSN,
-//     approvalStatus,
-//     availabilityTimes,
-//     currentLicenses,
-//     skills,
-//     preferredCenter
-//   }
 
-  // Logic for add button
   const handleUpdate = async (e) => {
     e.preventDefault(); // Prevent page refresh on submit
 
     
 
-    const response = await fetch('/api/volunteers/'  + volunteer._id, {
+    const response = await fetch('/api/volunteers/edit/'  + volunteer._id, {
       method: 'PATCH',
       body: JSON.stringify(volunteer),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+
       }
     })
 
@@ -119,7 +96,7 @@ const EditVolunteerForm = ({ volunteer }) => {
             <label>Username*</label>
             <input 
               type="text"
-              value={username} 
+              value={volunteer.username} 
               onChange={(e) => setUserName(e.target.value)} 
               className={emptyFields.includes('username') ? 'error' : ''}
             />
