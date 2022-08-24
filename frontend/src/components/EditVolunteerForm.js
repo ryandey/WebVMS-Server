@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useVolunteersContext } from '../hooks/useVolunteersContext';
 import { useAuthContext } from '../hooks/useAuthContext';
 
-const EditVolunteerForm = ({ volunteer }) => {
+const EditVolunteerForm = ({ volunteer}) => {
   const { user } = useAuthContext();
   const { dispatch } = useVolunteersContext(); // Allow access to manage volunteers
   const [username, setUserName] = useState();

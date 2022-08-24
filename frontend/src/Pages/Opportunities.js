@@ -1,46 +1,46 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
-import { useVolunteersContext } from '../hooks/useVolunteersContext'
+import { useOpportunityContext } from '../hooks/useOpportunityContext'
 import { useAuthContext } from '../hooks/useAuthContext';
 
 // components
-import VolunteerDetails from '../components/VolunteerDetails'
-//import EditVolunteerForm from '../components/EditVolunteerForm';
+import OpportunityDetails from '../components/OpportunityDetails'
 
-const Volunteers = () => {
-  const { volunteers, dispatch } = useVolunteersContext();
+
+const Opportunities = () => {
+  const { opportunities, dispatch } = useOpportunityContext();
   const { user } = useAuthContext();
 
     useEffect(() => {
-      const fetchVolunteers = async () => {
-        const response = await fetch('/api/volunteers', {
+      const fetchOpportunities = async () => {
+        const response = await fetch('/api/opportunities', {
           headers: {'Authorization': `Bearer ${user.token}`}
         })
         const json = await response.json(); 
 
         if (response.ok) {
-            dispatch({ type: 'SET_VOLUNTEERS', payload: json })
+            dispatch({ type: 'SET_OPPORTUNITIES', payload: json })
         }
     };
-      fetchVolunteers();
+      fetchOpportunities();
     }, [dispatch, user]);
 
   return (
-    <div className="volunteers">
+    <div className="opportunities">
       <div className="menu">
         <h2>Manage Opportunities</h2>
         <div className="menu-buttons">
           <form action="search">
-            <input type="text" placeholder='Search volunteers'/>
+            <input type="text" placeholder='Search opportunities'/>
           </form>
-          <Link to="/volunteers/add">
+          <Link to="/opportunities/add">
             <button className="btnAdd">Add <span className="material-symbols-outlined">add</span></button>
           </Link>
         </div>
       </div>
       <div className="vol-list">
-        {volunteers && volunteers.map((volunteer) => (
-          <VolunteerDetails key={volunteer._id} volunteer={volunteer} />
+        {opportunities && opportunities.map((opportunities) => (
+          <OpportunityDetails key={opportunities._id} opportunities={opportunities} />
         ))}
         
       </div>
@@ -48,4 +48,4 @@ const Volunteers = () => {
   )
 }
 
-export default Volunteers
+export default Opportunities

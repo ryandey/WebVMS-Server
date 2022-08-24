@@ -6,7 +6,11 @@ const{
     deleteOpportunity,
     updateOpportunity
 } = require('../controllers/opportunityController')
+
+const requireAuth = require('../middleware/requireAuth')
 const router = express.Router()
+
+router.use(requireAuth)
 
 //get all opportunities
 router.get('/', getOpportunities)
